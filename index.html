@@ -249,12 +249,12 @@
   <h1>GET IN<br>THE LOOP</h1>
   <p class="sub">Drop your number. We'll text you when something's happening — DJ sets, ladies' nights, free-shot hours. Nothing else, ever.</p>
 
-  <form id="signupForm">
+  <form id="signupForm" action="https://formspree.io/f/mdenajkq" method="POST">
     <label for="name">Name</label>
-    <input type="text" id="name" placeholder="Your name" required>
+    <input type="text" id="name" name="name" placeholder="Your name" required>
 
     <label for="phone">Phone number</label>
-    <input type="tel" id="phone" placeholder="+250 ..." required>
+    <input type="tel" id="phone" name="phone" placeholder="+250 ..." required>
 
     <div class="consent">
       <input type="checkbox" id="consent" required>
@@ -270,27 +270,45 @@
   <div class="stub">
     <div class="tag">Scan to join</div>
     <div class="qr-box">
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=REPLACE_WITH_YOUR_LIVE_URL" alt="QR code to signup page">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A%2F%2Fnzayisengaelissa.github.io%2Fmidnight-vibes-signup.%2F" alt="QR code to signup page">
     </div>
     <div class="cta-line">TEXT "START" TO JOIN</div>
     <p class="fine">Scan for VIP nights, DJ sets &amp; drink specials at Mid Night Vibes. No spam, unsubscribe anytime.</p>
   </div>
 
-  <div class="setup">
-    <b>To go live:</b><br>
-    1. Host this file somewhere public — the easiest free option is dragging it into <b>Netlify Drop</b> (netlify.com/drop) or GitHub Pages. You'll get a URL like <code>https://midnightvibes.netlify.app</code>.<br><br>
-    2. Replace <code>REPLACE_WITH_YOUR_LIVE_URL</code> in the QR image link above with that real URL (URL-encoded), so the QR code points to this page.<br><br>
-    3. This form currently doesn't save data anywhere — it's just the front end. Wire the submit button up to a free form backend like <b>Formspree</b> (formspree.io) in a few minutes, so submissions land in your email/dashboard without needing your own server.<br><br>
-    4. Print the stub section (or screenshot it) and put it on tables / at the register.
-  </div>
 
 </div>
 
 <script>
-  document.getElementById('signupForm').addEventListener('submit', function(e) {
+  const form = document.getElementById('signupForm');
+  const status = document.getElementById('status');
+
+  form.addEventListener('submit', async function(e) {
     e.preventDefault();
-    const status = document.getElementById('status');
-    status.textContent = "Demo only — connect this form to Formspree (see setup notes below) to actually collect signups.";
+    status.style.color = 'var(--amber)';
+    status.textContent = "Sending...";
+
+    const data = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        status.style.color = '#5CFFB0';
+        status.textContent = "You're on the list! See you at Mid Night Vibes 🔥";
+        form.reset();
+      } else {
+        status.style.color = 'var(--magenta)';
+        status.textContent = "Something went wrong — please try again.";
+      }
+    } catch (err) {
+      status.style.color = 'var(--magenta)';
+      status.textContent = "Network error — please try again.";
+    }
   });
 </script>
 </body>
