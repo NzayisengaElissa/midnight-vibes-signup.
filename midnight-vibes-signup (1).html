@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mid Night Vibes — VIP List</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #EAF0FF;
+    --void: #05060F;
+    --void-2: #0A0D1C;
+    --violet: #6E5BFF;
+    --magenta: #FF2EC4;
+    --amber: #2EE6FF;
+    --line: rgba(234,240,255,0.14);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+  }
+
+  body {
+    background:
+      radial-gradient(ellipse 700px 500px at 15% -5%, rgba(110,91,255,0.38), transparent 60%),
+      radial-gradient(ellipse 600px 500px at 105% 8%, rgba(255,46,196,0.26), transparent 60%),
+      radial-gradient(ellipse 500px 400px at 50% 120%, rgba(46,230,255,0.16), transparent 65%),
+      var(--void);
+    display: flex;
+    justify-content: center;
+    padding: 48px 20px 80px;
+  }
+
+  .wrap { width: 100%; max-width: 480px; }
+
+  .eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--amber);
+    text-align: center;
+    margin-bottom: 14px;
+    opacity: 0.9;
+  }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 14vw, 76px);
+    line-height: 0.92;
+    text-align: center;
+    letter-spacing: 0.01em;
+    background: linear-gradient(180deg, #FFFFFF 0%, #C9D4FF 45%, #6E5BFF 78%, #2EE6FF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 46px rgba(46,230,255,0.3);
+    margin-bottom: 6px;
+  }
+
+  .sub {
+    text-align: center;
+    font-size: 15px;
+    color: rgba(244,241,247,0.7);
+    max-width: 340px;
+    margin: 10px auto 34px;
+    line-height: 1.5;
+  }
+
+  form {
+    background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 26px 22px;
+    backdrop-filter: blur(6px);
+  }
+
+  label {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(244,241,247,0.55);
+    margin-bottom: 8px;
+    margin-top: 18px;
+  }
+  label:first-of-type { margin-top: 0; }
+
+  input[type="text"], input[type="tel"] {
+    width: 100%;
+    background: rgba(0,0,0,0.35);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 14px;
+    font-size: 16px;
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.15s ease;
+  }
+
+  input::placeholder { color: rgba(244,241,247,0.32); }
+
+  input:focus {
+    outline: none;
+    border-color: var(--magenta);
+    box-shadow: 0 0 0 3px rgba(255,46,196,0.2);
+  }
+
+  .consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .consent input[type="checkbox"] {
+    margin-top: 3px;
+    width: 17px;
+    height: 17px;
+    accent-color: var(--magenta);
+    flex-shrink: 0;
+  }
+
+  .consent p {
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: rgba(244,241,247,0.55);
+  }
+
+  button {
+    width: 100%;
+    margin-top: 22px;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    color: #17101E;
+    background: linear-gradient(90deg, var(--amber), var(--magenta));
+    cursor: pointer;
+    box-shadow: 0 8px 28px rgba(46,230,255,0.25);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+
+  button:hover { transform: translateY(-1px); box-shadow: 0 10px 32px rgba(46,230,255,0.35); }
+  button:active { transform: translateY(0); }
+
+  .status {
+    margin-top: 14px;
+    font-size: 13px;
+    text-align: center;
+    min-height: 18px;
+    color: var(--amber);
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 56px 0 30px;
+    color: rgba(244,241,247,0.35);
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  /* Ticket stub for printing / display near the register */
+  .stub {
+    position: relative;
+    background: var(--void-2);
+    border: 1px dashed rgba(46,230,255,0.35);
+    border-radius: 16px;
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .stub .tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--violet);
+  }
+
+  .stub .qr-box {
+    background: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    line-height: 0;
+  }
+
+  .stub .qr-box img { display: block; width: 176px; height: 176px; }
+
+  .stub .cta-line {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 0.03em;
+    color: var(--ink);
+  }
+
+  .stub .fine {
+    font-size: 11.5px;
+    color: rgba(244,241,247,0.45);
+    text-align: center;
+    max-width: 260px;
+  }
+
+  .setup {
+    margin-top: 40px;
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: rgba(244,241,247,0.5);
+    border-top: 1px solid var(--line);
+    padding-top: 18px;
+  }
+  .setup b { color: rgba(244,241,247,0.75); }
+  .setup code {
+    background: rgba(255,255,255,0.06);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11.5px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="eyebrow">Mid Night Vibes · Kigali</div>
+  <h1>GET IN<br>THE LOOP</h1>
+  <p class="sub">Drop your number. We'll text you when something's happening — DJ sets, ladies' nights, free-shot hours. Nothing else, ever.</p>
+
+  <form id="signupForm">
+    <label for="name">Name</label>
+    <input type="text" id="name" placeholder="Your name" required>
+
+    <label for="phone">Phone number</label>
+    <input type="tel" id="phone" placeholder="+250 ..." required>
+
+    <div class="consent">
+      <input type="checkbox" id="consent" required>
+      <p>Yes, text me about upcoming events at Mid Night Vibes. Reply STOP anytime to opt out. Msg &amp; data rates may apply.</p>
+    </div>
+
+    <button type="submit">Join the VIP list</button>
+    <div class="status" id="status"></div>
+  </form>
+
+  <div class="divider">Print &amp; place at the bar</div>
+
+  <div class="stub">
+    <div class="tag">Scan to join</div>
+    <div class="qr-box">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=REPLACE_WITH_YOUR_LIVE_URL" alt="QR code to signup page">
+    </div>
+    <div class="cta-line">TEXT "START" TO JOIN</div>
+    <p class="fine">Scan for VIP nights, DJ sets &amp; drink specials at Mid Night Vibes. No spam, unsubscribe anytime.</p>
+  </div>
+
+  <div class="setup">
+    <b>To go live:</b><br>
+    1. Host this file somewhere public — the easiest free option is dragging it into <b>Netlify Drop</b> (netlify.com/drop) or GitHub Pages. You'll get a URL like <code>https://midnightvibes.netlify.app</code>.<br><br>
+    2. Replace <code>REPLACE_WITH_YOUR_LIVE_URL</code> in the QR image link above with that real URL (URL-encoded), so the QR code points to this page.<br><br>
+    3. This form currently doesn't save data anywhere — it's just the front end. Wire the submit button up to a free form backend like <b>Formspree</b> (formspree.io) in a few minutes, so submissions land in your email/dashboard without needing your own server.<br><br>
+    4. Print the stub section (or screenshot it) and put it on tables / at the register.
+  </div>
+
+</div>
+
+<script>
+  document.getElementById('signupForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const status = document.getElementById('status');
+    status.textContent = "Demo only — connect this form to Formspree (see setup notes below) to actually collect signups.";
+  });
+</script>
+</body>
+</html>
